@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Zendesk Check Open Tickets
 // @namespace    http://tampermonkey.net/
-// @version      0.230676
+// @version      0.96 rev. 230676
 // @description  Checks if this user has OPEN/PENDING/ON-HOLD/NEW tickets and will display a notification at the top if they do
 // @author       Senff
 // @updateURL    https://github.com/senff/Zendesk-markdown-buttons/raw/master/zendesk-markdown-buttons.user.js
