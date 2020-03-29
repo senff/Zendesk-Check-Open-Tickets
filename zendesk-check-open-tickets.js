@@ -36,7 +36,6 @@ function checkTickets() {
                         }
                     } else {
                         $(this).addClass('this-ticket');
-                        $(this).find('td:last-child').appendTo('aaa');
                     }
                 });
                 if(winkWink > 0) {
@@ -61,9 +60,9 @@ function blinkieBlink() {
 }
 
 $('body').on('click','.nudgeNudge a',function(){
-    $('.nudgeNudge').remove();
-    $('body').css('padding-top',0).removeClass('saynoMORE');
-
+    $('.nudgeNudge a').html('Baiiiiiiiiii');
+    $('.nudgeNudge').fadeOut(500);
+    $('body').removeClass('saynoMORE').animate({padding: 0}, 800, function() {});
 });
 
 $(document).ready(function() {
