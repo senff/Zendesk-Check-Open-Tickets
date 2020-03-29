@@ -4,7 +4,7 @@
 // @version      0.91 rev 230676
 // @description  Checks if this user has OPEN/PENDING/NEW tickets and will display a notification at the top if they do
 // @author       Senff
-// @updateURL    https://github.com/senff/Zendesk-Check-Open-Tickets/raw/master/zendesk-check-open-tickets.user.js
+// @updateURL    https://github.com/senff/Zendesk-Check-Open-Tickets/raw/master/zendesk-check-open-tickets.js
 // @match        https://*.zdusercontent.com/*
 // @grant        none
 // ==/UserScript==
