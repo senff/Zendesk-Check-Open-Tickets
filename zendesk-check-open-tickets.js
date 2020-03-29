@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Zendesk Check Open Tickets
-// @namespace    https://github.com/senff/Zendesk-Check-Open-Tickets
-// @version      0.91 rev 230676
-// @description  Checks if this user has OPEN/PENDING/NEW tickets and will display a notification at the top if they do
+// @namespace    http://tampermonkey.net/
+// @version      0.230676
+// @description  Checks if this user has OPEN/PENDING/ON-HOLD/NEW tickets and will display a notification at the top if they do
 // @author       Senff
-// @updateURL    https://github.com/senff/Zendesk-Check-Open-Tickets/raw/master/zendesk-check-open-tickets.js
+// @updateURL    https://github.com/senff/Zendesk-markdown-buttons/raw/master/zendesk-markdown-buttons.user.js
 // @match        https://*.zdusercontent.com/*
 // @grant        none
 // ==/UserScript==
@@ -25,22 +25,22 @@ function checkTickets() {
                 var URLdivider = mainURL.split('/');
                 var thisTicket = URLdivider.pop();
                 var thisUser = $('.user__info .user__info-row:first-child .value').text();
-                $('#support__history-content .type-Zendesk_History').each(function(ticket) {
-                    var thisUserBox = $(this);
-                    if(($(this).hasClass('status-Open')) || ($(this).hasClass('status-Pending')) || ($(this).hasClass('status-New'))) {
-                        var ticketLine = $(this).find('.subject a').html();
-                        // Remove first character
-                        var ticketNoLong = ticketLine.substring(ticketLine.indexOf("#") + 1);
-                        // Remove everything after first space
-                        var ticketNo = ticketNoLong.substring(0, ticketNoLong.indexOf(' - '));
-                        if(ticketNo!=thisTicket) {
-                            // There's other tickets, aside from this one
+                $('#support__history-content .type-Zendesk_History').each(function(ticket) { // Looping through this user's list of tickets
+                    var ticketLine = $(this).find('.subject a').html();
+                    var ticketNoLong = ticketLine.substring(ticketLine.indexOf("#") + 1); // Remove first character
+                    var ticketNo = ticketNoLong.substring(0, ticketNoLong.indexOf(' - ')); // Remove everything after first space
+                    if(ticketNo!=thisTicket) {
+                        // This entry is not the ticket we're looking at
+                        if(($(this).hasClass('status-Open')) || ($(this).hasClass('status-Pending')) || ($(this).hasClass('status-Hold')) || ($(this).hasClass('status-New'))) { // There's other tickets, aside from this one
                             winkWink = winkWink + 1;
                         }
+                    } else {
+                        $(this).addClass('this-ticket');
+                        $(this).find('td:last-child').appendTo('aaa');
                     }
                 });
                 if(winkWink > 0) {
-                    $('body').append('<style type="text/css" id="nudgestyles">.nudgeNudge{box-sizing:border-box; position: fixed; width: 100%; top:0; z-index: 100; background: #aa0000; color: #ffffff; padding: 7px 10px 10px; line-height: 20px;}.nudgeNudge a {color: #FFFFCC;font-weight: bold; text-decoration:underline;}.hidethis{opacity:0;}</style>').addClass('saynoMORE');
+                    $('body').append('<style type="text/css" id="nudgestyles">.nudgeNudge{box-sizing:border-box; position: fixed; width: 100%; top:0; z-index: 100; background: #aa0000; color: #ffffff; padding: 7px 10px 10px; line-height: 20px;}.nudgeNudge a {color: #FFFFCC;font-weight: bold; text-decoration:underline;}.hidethis{opacity:0;}.this-ticket{background: #e7e7e7;filter: grayscale(100%);}.this-ticket td:first-child {border-left: solid 1px #cccccc;}.this-ticket td,.this-ticket td a {cursor: default;pointer-events: none;color: #888888 !important;text-shadow: 1px 1px 0 #ffffff;font-style: italic;font-size: 12px;}</style>').addClass('saynoMORE');
                     nudgeNudge = "<div class='nudgeNudge'><span style='font-size:18px;'>⚠️</span> <span class='whatsItLike'><strong>THIS USER HAS OTHER OPEN/PENDING TICKETS!</strong> Please check those first before you reply here.</span>&nbsp;&nbsp;&nbsp;<a href='#'>Cool, got it.</a></strong></div>";
                     $(nudgeNudge).prependTo('body');
                     var nudgeHeight = $('.nudgeNudge').outerHeight()+5;
@@ -63,6 +63,7 @@ function blinkieBlink() {
 $('body').on('click','.nudgeNudge a',function(){
     $('.nudgeNudge').remove();
     $('body').css('padding-top',0).removeClass('saynoMORE');
+
 });
 
 $(document).ready(function() {
