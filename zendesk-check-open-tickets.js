@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Zendesk Check Open Tickets
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/senff/Zendesk-Check-Open-Tickets
 // @version      0.91 rev 230676
 // @description  Checks if this user has OPEN/PENDING/NEW tickets and will display a notification at the top if they do
 // @author       Senff
