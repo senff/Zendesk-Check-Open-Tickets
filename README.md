@@ -15,8 +15,9 @@ With Tampermonkey, you can add your own custom Javascript code to any site, to m
 ## INSTALLATION:
 
 1. Install Tampermonkey extension
-2. Go to https://github.com/senff/Zendesk-Check-Open-Tickets/raw/master/zendesk-check-open-tickets.user.js
-3. Select the **INSTALL** button.
+2. Create a new script in Tampermonkey
+3. Copy the code from https://raw.githubusercontent.com/senff/Zendesk-Check-Open-Tickets/master/zendesk-check-open-tickets.js and paste it into this new script in Tampermonkey
+4. Save
 
 ## MORE INFORMATION:
 https://heinvestigations.wordpress.com/2019/01/14/happy-suite-of-happiness-hacks/
