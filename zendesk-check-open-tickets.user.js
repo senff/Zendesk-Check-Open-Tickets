@@ -3,6 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.98 rev. 230676
 // @description  Checks if this user has OPEN/PENDING/ON-HOLD/NEW tickets and will display a notification at the top if they do
+// @updateURL    https://github.com/senff/Zendesk-Check-Open-Tickets/raw/master/zendesk-check-open-tickets.user.js
 // @author       Senff
 // @match        https://*.zdusercontent.com/*
 // @grant        none
