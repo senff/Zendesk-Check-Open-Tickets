@@ -1,4 +1,4 @@
-## WHAT DOES THIS CSS/JAVASCRIPT DO
+## WHAT DOES THIS JAVASCRIPT DO
 
 - when looking at a ticket in Zendesk, this script checks if the user has any other OPEN/PENDING/ON-HOLD/NEW tickets and will display a notification at the top if they do
 
