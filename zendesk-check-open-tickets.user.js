@@ -40,7 +40,7 @@ function checkTickets() {
                 });
                 if(winkWink > 0) {
                     $('body').addClass('saynoMORE');
-                    nudgeNudge = "<div class='nudgeNudge'><span style='font-size:18px;'>⚠️</span> <span class='whatsItLike'><strong>THIS USER HAS OTHER OPEN/PENDING TICKETS!</strong> Please check those first before you reply here.</span>&nbsp;&nbsp;&nbsp;<span class='cool'>Cool, got it.</span></strong></div>";
+                    nudgeNudge = "<div class='nudgeNudge'><span style='font-size:18px;'>⚠️</span> <span class='whatsItLike'><strong>THIS USER HAS OTHER OPEN/PENDING TICKETS!</strong> Please check those first before you reply here.</span>&nbsp;&nbsp;&nbsp;<span class='cool'>Cool, got it.</span></div>";
                     $(nudgeNudge).prependTo('body');
                     var nudgeHeight = $('.nudgeNudge').outerHeight()+5;
                     $('body').css('padding-top',nudgeHeight+'px');
